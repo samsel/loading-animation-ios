@@ -26,7 +26,7 @@
 - (void)showLoadingAnimationView
 {
     _loadingAnimationView = [LoadingAnimationView new];
-    [_loadingAnimationView showWithImage:nil andMessage:@"loading from server.." inView:self.view];
+    [_loadingAnimationView showWithImage:nil andMessage:@"loading from server..." inView:self.view];
 }
 
 
