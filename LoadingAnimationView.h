@@ -10,4 +10,7 @@
 
 @interface LoadingAnimationView : UIView
 
+- (void)showWithImage:(UIImage *)image andMessage:(NSString *)message inView:(UIView *)view;
+- (void)hide;
+
 @end
