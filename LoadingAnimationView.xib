@@ -14,18 +14,25 @@
                     <rect key="frame" x="8" y="196" width="304" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </label>
                 <view contentMode="scaleToFill" id="AHS-de-Gaj">
-                    <rect key="frame" x="120" y="234" width="80" height="80"/>
+                    <rect key="frame" x="120" y="234" width="70" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="CWe-eu-PYa">
+                            <rect key="frame" x="8" y="18" width="54" height="33"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </imageView>
+                    </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="animationView" destination="AHS-de-Gaj" id="9AB-tc-3jI"/>
+                <outlet property="imageView" destination="CWe-eu-PYa" id="Yy8-GA-Ebh"/>
                 <outlet property="messageLabel" destination="sgo-EN-r8u" id="9yO-H1-jKh"/>
             </connections>
             <point key="canvasLocation" x="339" y="404"/>

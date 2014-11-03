@@ -15,6 +15,7 @@ static NSString *const animationKey = @"loading.animation.key";
 
 @property (nonatomic, weak) IBOutlet UIView *animationView;
 @property (nonatomic, weak) IBOutlet UILabel *messageLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *imageView;
 
 @end
 
@@ -36,14 +37,15 @@ static NSString *const animationKey = @"loading.animation.key";
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    self.layer.backgroundColor = [[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0] CGColor];
-    _animationView.layer.backgroundColor = [[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.3] CGColor];
-    _animationView.layer.cornerRadius = 3.0;
+    self.layer.backgroundColor = [[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1] CGColor];
+    _animationView.layer.backgroundColor = [[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1] CGColor];
+    _animationView.layer.cornerRadius = 4.0;
 }
 
 - (void)showWithImage:(UIImage *)image andMessage:(NSString *)message inView:(UIView *)view
 {
     _messageLabel.text = message;
+    _imageView.image = image;
     [self startAnimation];
     [view addSubview:self];
 }
@@ -51,6 +53,7 @@ static NSString *const animationKey = @"loading.animation.key";
 - (void)hide
 {
     [self stopAnimation];
+    [self removeFromSuperview];
 }
 
 - (void)startAnimation
@@ -66,8 +69,8 @@ static NSString *const animationKey = @"loading.animation.key";
     NSArray *angle = @[@0,
                         @(-M_PI * 30.0/180.0),
                         @(-M_PI * 30.0/180.0),
-                        @(M_PI),
-                        @(M_PI)];
+                        @(M_PI * 2.0),
+                        @(M_PI * 2.0)];
     
     NSArray *function = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn],
                        [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn],
@@ -79,7 +82,7 @@ static NSString *const animationKey = @"loading.animation.key";
     [animation setKeyTimes:time];
         [animation setValues:angle];
     [animation setTimingFunctions:function];
-    animation.duration = 1.5;
+    animation.duration = 2.0;
     animation.repeatCount = HUGE_VALF;
     [_animationView.layer addAnimation:animation forKey:animationKey];
 }
@@ -88,7 +91,5 @@ static NSString *const animationKey = @"loading.animation.key";
 {
     [_animationView.layer removeAnimationForKey:animationKey];
 }
-
-
 
 @end

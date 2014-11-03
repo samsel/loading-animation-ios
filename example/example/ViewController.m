@@ -17,16 +17,18 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self showLoadingAnimationView];
-    
+- (IBAction)startLoadingAnimationViewDemo:(id)sender
+{
+    if (_loadingAnimationView == nil) {
+        _loadingAnimationView = [LoadingAnimationView new];
+    }
+    [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(stopLoadingAnimationViewDemo) userInfo:nil repeats:NO];
+    [_loadingAnimationView showWithImage:[UIImage imageNamed:@"coffee"] andMessage:@"loading from server..." inView:self.view];
 }
 
-- (void)showLoadingAnimationView
+- (void)stopLoadingAnimationViewDemo
 {
-    _loadingAnimationView = [LoadingAnimationView new];
-    [_loadingAnimationView showWithImage:nil andMessage:@"loading from server..." inView:self.view];
+    [_loadingAnimationView hide];
 }
 
 
