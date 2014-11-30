@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 static NSString *const animationKey = @"loading.animation.key";
+static float const kEaseInEaseOutDuration = 0.5f;
 
 @interface LoadingAnimationView ()
 
@@ -48,12 +49,20 @@ static NSString *const animationKey = @"loading.animation.key";
     _imageView.image = image;
     [self startAnimation];
     [view addSubview:self];
+    [_animationView setAlpha:0.0f];
+    [UIView animateWithDuration:kEaseInEaseOutDuration delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [_animationView setAlpha:1.0f];
+    } completion:nil];
 }
 
 - (void)hide
 {
-    [self stopAnimation];
-    [self removeFromSuperview];
+    [UIView animateWithDuration:kEaseInEaseOutDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [_animationView setAlpha:0.0f];
+    } completion:^(BOOL finished) {
+        [_animationView.layer removeAnimationForKey:animationKey];
+        [self removeFromSuperview];
+    }];
 }
 
 - (void)startAnimation
@@ -80,16 +89,11 @@ static NSString *const animationKey = @"loading.animation.key";
 
     
     [animation setKeyTimes:time];
-        [animation setValues:angle];
+    [animation setValues:angle];
     [animation setTimingFunctions:function];
     animation.duration = 2.2;
     animation.repeatCount = HUGE_VALF;
     [_animationView.layer addAnimation:animation forKey:animationKey];
-}
-
-- (void)stopAnimation
-{
-    [_animationView.layer removeAnimationForKey:animationKey];
 }
 
 @end
