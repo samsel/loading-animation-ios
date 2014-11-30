@@ -37,9 +37,9 @@ static NSString *const animationKey = @"loading.animation.key";
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    self.layer.backgroundColor = [[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1] CGColor];
-    _animationView.layer.backgroundColor = [[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1] CGColor];
-    _animationView.layer.cornerRadius = 4.0;
+    self.layer.backgroundColor = [[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.3] CGColor];
+    _animationView.layer.backgroundColor = [[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7] CGColor];
+    _animationView.layer.cornerRadius = 3.0;
 }
 
 - (void)showWithImage:(UIImage *)image andMessage:(NSString *)message inView:(UIView *)view
@@ -82,7 +82,7 @@ static NSString *const animationKey = @"loading.animation.key";
     [animation setKeyTimes:time];
         [animation setValues:angle];
     [animation setTimingFunctions:function];
-    animation.duration = 2.0;
+    animation.duration = 2.2;
     animation.repeatCount = HUGE_VALF;
     [_animationView.layer addAnimation:animation forKey:animationKey];
 }
